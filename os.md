@@ -39,8 +39,17 @@
 #### os.chdir(path)
 ####os.fchdir(fd)
 ####os.getcwd()
+这些函数在*__文件和目录__*中描述。
 
- 
+####os.ctermid()
+根据进程的控制终端返回其文件名。
+可用平台：Unix
+
+####os.getegid()
+返回当前进程的有效组ID。与执行该文件的当前进程的"set id"位相对应。
+可用平台：Unix
+
+
 
  
 
