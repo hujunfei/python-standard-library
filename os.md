@@ -42,28 +42,36 @@
 这些函数在*__文件和目录__*中描述。
 
 ####os.ctermid()
-根据进程的控制终端返回其文件名。
+根据进程的控制终端返回其文件名。  
 适用平台：Unix
 
 ####os.getegid()
-返回当前进程的有效组ID。与执行该文件的当前进程的"set id"位相对应。
+返回当前进程的有效组ID。与执行该文件的当前进程的"set id"位相对应。  
 适用平台：Unix
 
 ####os.geteuid()
-返回当前进程的有效用户ID。
+返回当前进程的有效用户ID。  
 适用平台：Unix
 
 ####os.getgid()
-返回当前进程的真实组ID
+返回当前进程的真实组ID  
 适用平台：Unix
 
 ####os.getgroups()
-返回当前进程相关的组ID列表
+返回当前进程相关的组ID列表  
 适用平台：Unix
 
-> 注意：在Mac OS X上，<code>getgroups()</code>的行为与其他Unix平台不同。若Python解释器在10.5及之前的版本上构建的，<code>getgroups()</code>返回当前用户进程相关联的有效组ID列表；这个列表受限于系统定义的项数，一般是16，可以通过授权条件下调用<code>setgroups()</code>来修改。
+> 注意：在Mac OS X上，<code>getgroups()</code>的行为与其他Unix平台不同。若Python解释器在10.5及之前的版本上构建的，<code>getgroups()</code>返回当前用户进程相关联的有效组ID列表；这个列表受限于系统定义的项数，一般是16，可以通过授权条件下调用<code>setgroups()</code>来修改。  
 若在10.5以上版本上构建，则<code>getgroups()</code>返回与进程的有效用户ID相关联的用户当前可访问组列表(？有点不通顺，不明其意)；在进程的生命周期，组可访问列表可能会改变，调用<code>setgroups()</code>不会影响该列表，长度也不会受限于16。布署目标机器的版本值<code>MACOSX_DEPLOYMENT_TARGET</code>可以通过<code>sysconfig.get_config_var()</code>来获取。
 
+####os.initgroups(username, gid)
+调用系统函数<code>initgroups()</code>初始化用户组访问列表，其中的用户组为指定<code>username</code>所属组，可指定组ID。  
+适用平台：Unix  
+2.7版本新增
+
+####os.getlogin()
+返回进程所在控制终端的登录用户名。若需要更多用途，可以使用环境变量<code>LOGNAME</code>，或<code>pwd.getpwuid(os.getuid())[0]</code>来获取当前有效用户ID的登录名。  
+适用平台：Unix
 
  
 
