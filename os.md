@@ -73,6 +73,50 @@
 返回进程所在控制终端的登录用户名。若需要更多用途，可以使用环境变量<code>LOGNAME</code>，或<code>pwd.getpwuid(os.getuid())[0]</code>来获取当前有效用户ID的登录名。  
 适用平台：Unix
 
- 
+####os.getpgid(pid)
+返回进程pid的组ID。若pid为0，则返回当前进程的组ID。
+适用平台：Unix
+
+####os.getpgrp() 
+返回当前进程组ID。
+适用平台：Unix
+
+####os.getpid()
+返回当前进程ID。
+适用平台：Unix, Windows
+
+####os.getppid()
+返回父进程ID
+适用平台：Unix
+
+####os.getresuid()
+返回一个元组(ruid, euid, suid)，表示当前进程的真实、有效和保存用户ID。
+适用平台：Unix
+2.7新增
+
+####os.getresgid()
+返回一个元组(rgid, egid, sgid)，表示当前进程的真实、有效和保存用户组ID。
+适用平台：Unix
+2.7新增
+
+####os.getuid()
+返回当前进程的真实用户ID。
+适用平台：Unix
+
+####os.getenv(varname[, value])
+若环境变量*varname*存在，则返回变量值，否则返回*value*。默认*value*为<code>None</code>
+适用平台：Unix的多数版本，Windows
+
+####os.putenv(varname, value)
+设置环境变量*varname*为字符串*value*。修改会影响由<code>os.system()</code>, <code>popen()</code>或<code>fork()</code>以及<code>execv()</code>。
+适用平台：Unix的多数版本，Windows
+> 注意：在FreeBSD和Mac OS X等平台上，设置<code>environ</code>可能导致内存泄露。参考相应平台的系统手册。
+
+若当前平台支持<code>putenv()</code>函数，调用<code>os.environ()</code>自动转换为调用相应的<code>putenv()</code>函数。尽管如此，调用<code>putenv()</code>不会更新<code>os.environ</code>，所以最好设置<code>os.environ</code>。
+
+####os.setegid(egid)
+设置当前进程的有效组ID
+适用平台：Unix
+
 
  
